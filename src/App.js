@@ -1,26 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import HomePage from './pages/HomePage';
+import Category from './pages/Category';
+import Header from './components/Header';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
+
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+
+class App extends React.Component{
+  constructor(){
+    super();
+    
+  }
+
+  render(){
+    return (
+      
+      <Container fluid="true">
+        <Router>
+          <Row>
+            <Col><Header/></Col>
+          </Row>    
+          <Row>
+            <Col>
+              <Switch>
+                <Route path="/" exact component={HomePage} />
+                <Route path="/categories" component={Category} />
+              </Switch>
+            </Col>
+          </Row>
+        </Router>
+    </Container>      
+    );
+  }
+};
 
 export default App;
